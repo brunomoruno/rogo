@@ -1,0 +1,76 @@
+:root {
+  --bg: #000000;
+  --surface: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.15);
+  --border-input: rgba(255, 255, 255, 0.2);
+  --text: #fafafa;
+  --muted: rgba(255, 255, 255, 0.65);
+  --muted2: rgba(255, 255, 255, 0.4);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: 100svh;
+  position: relative;
+  z-index: 1;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-color: rgba(255, 255, 255, 0.65);
+}
+
+/* Subtle noise (Beans is clean black; keep very light texture) */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Anchor offset under sticky nav */
+.hero,
+.section {
+  scroll-margin-top: 5.5rem;
+}

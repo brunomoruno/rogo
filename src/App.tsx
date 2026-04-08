@@ -29,9 +29,6 @@ function App() {
                     tooons of energy into. This is a huge moment for the Rogo team and we&apos;re so
                     grateful to have your support.
                   </p>
-                  <p className="hero__goal">
-                    <strong>GOAL:</strong> Flood the post with real engagement at launch.
-                  </p>
                   <div className="post-links">
                     <a
                       href={linkedinPostUrl || '#'}

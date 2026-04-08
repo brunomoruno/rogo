@@ -104,7 +104,7 @@ export function InspirationSection() {
   return (
     <section id="inspiration" className="section section--inspiration">
       <Reveal>
-        <h2 className="inspiration__title">Templates with AI Refresh</h2>
+        <h2 className="inspiration__title">AI Generated Examples</h2>
 
         <div className="inspiration__toggle-wrap">
           <span className="inspiration__toggle-label">Platform</span>

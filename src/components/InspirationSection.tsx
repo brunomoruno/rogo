@@ -1,40 +1,51 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Reveal } from './Reveal'
-import { fetchInspirationBatch, type Platform } from '../lib/generateInspiration'
+import { fetchInspirationBatch } from '../lib/generateInspiration'
+
+type Platform = 'linkedin' | 'x'
 
 const PRESETS: Record<Platform, { repost: string[]; comment: string[] }> = {
   linkedin: {
     repost: [
-      "Really happy to see @Rogo launch Felix. What's always stood out to me about this team is they actually come from finance. They've lived the workflows, they know where things break. Felix is their AI agent that handles execution through email. Not a chatbot, not another dashboard. Just a teammate that does the work.",
-      "Finance used to work differently. You'd sit with a senior banker, watch how they handled a client, pick things up over time through proximity. At some point juniors became production lines and that stopped happening. @Rogo just launched Felix so the dynamic can shift back. Juniors develop judgment. Seniors actually get to bring their people along.",
-      "I've been in the seat this product is built for. The hard part wasn't the hours, it was knowing that most of what you were doing was mechanical. Reformatting the same data, toggling between tools, sending updates. @Rogo just launched Felix and it's honestly the product I wish existed when I was coming up.",
-      "Most AI tools in finance struggle with adoption because they ask people to change how they work. @Rogo went the other way with Felix. You just email it, like you'd email anyone on your team. It works across your existing tools. No new login, no learning curve. Really underrated design decision.",
-      "The senior / junior thread in the launch creative is what stuck — both on Felix, converging when the junior isn't stuck at the desk. They're in the room, learning in real time. @Rogo built something that's less about productivity and more about how the next generation develops.",
+      "The hardest part of ops at scale isn’t the “automation” you can write once. It’s all the judgment work that lives in PDFs, portals, and phone calls. Champ is one of the first products I’ve seen that treats that as the core problem, not an edge case. Curious what workflows people are most excited to hand off first.",
+      "Most teams hit a wall where they can automate the easy API stuff, but the messy work still needs humans: compliance forms, tax portals, insurance hold music. Champ’s framing (“people are never the bottleneck”) is the right North Star. The escalation-to-Slack pattern is especially important if you want trust + control.",
+      "If you’ve ever tried to onboard tens of thousands of people quickly, you know the pain isn’t just volume. It’s variance. Different documents, different edge cases, different portals that break every Tuesday. Champ feels built for that reality: agents that operate in the same systems your team is stuck in.",
+      "I like that Champ isn’t stitched together from three vendors. Browser + docs + voice, orchestrated as one workflow, with a clear confidence/escalation loop. That’s the difference between “AI demo” and something an ops leader can actually run in production.",
+      "The real promise here isn’t replacing ops teams. It’s giving them instant scalability without losing judgment. If Champ can reliably handle the repetitive steps and surface the weird cases with full context, that’s a meaningful shift in how operations orgs are staffed and managed.",
     ],
     comment: [
-      'Congrats Gabe and the Rogo team on this. Felix feels like a really natural evolution of the platform, not just another feature but something that changes how the work actually gets done. Curious to see how this lands with teams.',
-      "The apprenticeship framing really hits home. I've seen so many sharp juniors spend their first couple years becoming PowerPoint machines instead of learning how to think. If Felix takes the execution off their plate, that's not just faster work, it's a totally different career trajectory.",
-      "If you've ever spent a whole night pulling comps, formatting slides, and updating trackers only to realize you never actually thought about the deal itself, you get why Felix matters. That gap between doing the work and learning from the work is exactly what this is solving.",
-      "The fact that you just email Felix is honestly the smartest design choice here. I've seen so many AI tools die because they ask bankers to change their entire workflow. Nobody wants another login. Meeting people in their inbox is how you actually get adoption.",
-      "The thing that sticks with me is what this means for the senior side. The best MDs I ever worked under weren't just dealmakers, they genuinely wanted to teach. But how do you mentor someone who's stuck at the office building the book? If Felix gets the junior into the room, that's where the real learning starts.",
+      "This nails the ops reality: you can automate the clean, deterministic pieces, but the judgment work still eats the team alive. Champ going after portals + documents + phone calls in one workflow is the real unlock here.",
+      "The “people are never the bottleneck” framing is exactly right. The Slack escalation loop is what turns this from a demo into something an ops team can trust.",
+      "SOP → copilot → workflow is a great abstraction. It fits how ops leaders actually reason about work, instead of forcing everything into prompts and one-off scripts.",
+      "Browser + docs + voice only works when orchestration is first-class. Retries, fallbacks, and clean handoffs are the difference between a prototype and production.",
+      "The best version of AI in ops is leverage with accountability. Let agents do the repetitive steps, and let humans own the edge cases that require judgment.",
     ],
   },
   x: {
     repost: [
-      "Finance people building AI for finance people. Harder to find than you'd think. Big day for @RogoAI.",
-      "Finance used to be an apprenticeship. Then it turned into execution. Felix makes the case it doesn't have to stay that way.",
-      'Every former analyst knows the feeling. You spend 80% of your time on mechanics and 20% actually learning. Something had to give.',
-      "You email it like a colleague and it just runs the workflow. No new app to learn. That's the whole game right there.",
-      "Not about the AI honestly. It's about the junior finally getting out of the chair and into the room where the deal happens.",
+      "ops at scale breaks on the stuff you *can’t* API. portals, PDFs, phone calls. Champ is going straight at that.",
+      "the “AI demo → production workflow” gap is basically orchestration + escalation. Champ seems to understand that.",
+      "onboarding 500k people in a month is a war story. building a platform so nobody has to do that again is the right kind of ambition.",
+      "browser + doc + voice agents as one workflow (not 3 vendors taped together) is the only way this works in real ops.",
+      "AI won’t replace ops teams. but it can give them instant scalability *if* you keep humans in the loop on low-confidence steps. Champ’s approach is sane.",
     ],
     comment: [
-      "This team's been heads down for years building this. 25K finance pros already on the platform. Felix looks legit.",
-      "We turned junior bankers into execution machines and then got confused when they couldn't develop judgment. This is how you fix that.",
-      "The gap between doing the work and learning from the work is the whole problem in banking right now. This is the first thing I've seen that actually closes it.",
-      "You just email it. No new app, no new UI, you just delegate like you would to a colleague. That's why this one's going to stick.",
-      "Forget the efficiency angle. The real thing here is the junior can finally leave the desk and actually be in the room. That's where you learn.",
+      "this is the real ops bottleneck: judgment work hiding in messy docs + portals + phone trees. champ going straight at execution (not dashboards) is the right move.",
+      "love the escalation-to-slack pattern. “AI handles the boring steps, humans handle the weird ones” is the only model that scales.",
+      "SOP → workflow is such a better abstraction than “prompt → output.” does Champ track confidence per step or just per run?",
+      "the multi-agent thing only matters if orchestration is first-class. otherwise it’s just three tools and a prayer.",
+      "if you’ve ever run compliance/tax/insurance ops, you know why this matters. portals change, forms drift, edge cases explode. agents that *navigate* is the point.",
     ],
   },
+}
+
+function shuffle<T>(arr: T[]): T[] {
+  const out = [...arr]
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[out[i], out[j]] = [out[j]!, out[i]!]
+  }
+  return out
 }
 
 function CopyLine({ text }: { text: string }) {
@@ -73,26 +84,32 @@ export function InspirationSection() {
   }, [platform])
 
   const refreshRepost = useCallback(async () => {
-    setRepostError(null)
     setRepostLoading(true)
+    setRepostError(null)
     try {
       const next = await fetchInspirationBatch(platform, 'repost')
       setRepostItems(next)
     } catch (e) {
-      setRepostError(e instanceof Error ? e.message : 'Something went wrong')
+      // If AI is not configured, fall back to shuffling the placeholders.
+      const msg = e instanceof Error ? e.message : 'Something went wrong'
+      setRepostError(msg)
+      setRepostItems((prev) => shuffle(prev))
     } finally {
       setRepostLoading(false)
     }
   }, [platform])
 
   const refreshComment = useCallback(async () => {
-    setCommentError(null)
     setCommentLoading(true)
+    setCommentError(null)
     try {
       const next = await fetchInspirationBatch(platform, 'comment')
       setCommentItems(next)
     } catch (e) {
-      setCommentError(e instanceof Error ? e.message : 'Something went wrong')
+      // If AI is not configured, fall back to shuffling the placeholders.
+      const msg = e instanceof Error ? e.message : 'Something went wrong'
+      setCommentError(msg)
+      setCommentItems((prev) => shuffle(prev))
     } finally {
       setCommentLoading(false)
     }
@@ -104,10 +121,10 @@ export function InspirationSection() {
   return (
     <section id="inspiration" className="section section--inspiration">
       <Reveal>
-        <h2 className="inspiration__title">AI Generated Examples</h2>
+        <h2 className="inspiration__title">AI generated examples</h2>
+        <p className="inspiration__subtitle">(tweak slightly)</p>
 
         <div className="inspiration__toggle-wrap">
-          <span className="inspiration__toggle-label">Platform</span>
           <div className="segmented inspiration__segmented" role="group" aria-label="Platform">
             <button
               type="button"
@@ -147,7 +164,7 @@ export function InspirationSection() {
               onClick={refreshRepost}
               disabled={repostLoading}
             >
-              {repostLoading ? 'Generating…' : 'Refresh'}
+              {repostLoading ? 'Generating...' : 'Refresh'}
             </button>
           </div>
 
@@ -171,7 +188,7 @@ export function InspirationSection() {
               onClick={refreshComment}
               disabled={commentLoading}
             >
-              {commentLoading ? 'Generating…' : 'Refresh'}
+              {commentLoading ? 'Generating...' : 'Refresh'}
             </button>
           </div>
         </div>

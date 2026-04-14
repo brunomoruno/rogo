@@ -7,7 +7,7 @@ export function StickyNav({ visible }: StickyNavProps) {
     <header className={`sticky-nav ${visible ? 'sticky-nav--visible' : ''}`} role="banner">
       <div className="sticky-nav__inner sticky-nav__inner--minimal">
         <a href="#top" className="sticky-nav__logo">
-          felix launch
+          champ launch
         </a>
       </div>
     </header>

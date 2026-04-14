@@ -23,11 +23,12 @@ function App() {
             <div className="beans-main">
               <header ref={heroRef} className="hero" id="top">
                 <div className="hero__inner">
-                  <h1 className="hero__title">felix launch</h1>
+                  <h1 className="hero__title">champ launch</h1>
                   <p className="hero__intro">
-                    Hi all - we&apos;re super excited for the launch of Felix, a project we&apos;ve put
-                    tooons of energy into. This is a huge moment for the Rogo team and we&apos;re so
-                    grateful to have your support.
+                    Hi all, we&apos;re really excited to share Champ, a project we&apos;ve poured a ton of
+                    energy into, which supercharges operations teams with AI agents so scaling never
+                    creates bottlenecks. Please comment, like, repost, and share -- we are so so
+                    grateful for your support.
                   </p>
                   <div className="post-links">
                     <a
@@ -43,7 +44,7 @@ function App() {
                       }
                       aria-disabled={!linkedinPostUrl}
                     >
-                      LinkedIn — highest priority
+                      LinkedIn (highest priority)
                     </a>
                     <a
                       href={xPostUrl || '#'}
@@ -66,30 +67,27 @@ function App() {
                 <Reveal>
                   <ul className="key-points">
                     <li>
-                      <strong>Felix</strong> is Rogo&apos;s <strong>AI agent</strong> — you delegate
-                      over <strong>email</strong> and <strong>Teams</strong>; it delivers{' '}
-                      <strong>pitch materials</strong>, <strong>models</strong>, <strong>filings</strong>,
-                      and coordination across tools you already use. <strong>Available 24/7.</strong>
+                      <strong>Champ</strong> is the <strong>AI agents platform</strong> for operations.
+                      You upload an <strong>SOP</strong> (or describe the process) and the copilot
+                      builds a workflow that runs with <strong>browser</strong>, <strong>document</strong>
+                      , and <strong>voice</strong> agents, all <strong>orchestrated together</strong>.
                     </li>
                     <li>
-                      <strong>Execution, not dashboards</strong> — it runs{' '}
-                      <strong>real workflows</strong> across spreadsheets, decks, PDFs, and research.
-                      Not another <strong>analytics layer</strong> that shows you{' '}
-                      <strong>problems it can&apos;t solve</strong>.
+                      <strong>Judgment work at scale</strong>. Engineering automates the easy stuff
+                      (APIs, pipelines), but the work that requires judgment still needs people:{' '}
+                      <strong>PDFs</strong>, <strong>government portals</strong>, tax/compliance, calling
+                      insurance companies.
                     </li>
                     <li>
-                      <strong>The apprenticeship narrative</strong> — finance became{' '}
-                      <strong>pure execution</strong>. Felix brings back juniors building{' '}
-                      <strong>judgment</strong> and seniors <strong>mentoring</strong> and{' '}
-                      <strong>winning deals</strong>.{' '}
-                      <strong>
-                        The senior/junior dual storyline is the heart of the launch.
-                      </strong>
+                      <strong>Human-in-the-loop control</strong>. When an agent isn&apos;t confident, it
+                      escalates to your team in <strong>Slack</strong> with full context so you stay in
+                      control.
                     </li>
                     <li>
-                      When you comment — say <strong>agent/teammate</strong>, never{' '}
-                      <strong>chatbot</strong>. Never frame as <strong>replacing people</strong>. No{' '}
-                      <strong>valuation</strong> speculation. No <strong>competitor names</strong>.
+                      When you comment, avoid hype. Frame this as{' '}
+                      <strong>instant scalability</strong> for ops teams (not replacing people), and
+                      keep it concrete: portals, documents, calls, and escalation when confidence is
+                      low.
                     </li>
                   </ul>
                 </Reveal>

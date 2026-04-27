@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import './App.css'
 import { StickyNav } from './components/StickyNav'
 import { Reveal } from './components/Reveal'
-import { InspirationSection } from './components/InspirationSection'
 import { usePastHero } from './hooks/usePastHero'
 
 const linkedinPostUrl = import.meta.env.VITE_LINKEDIN_POST_URL?.trim() ?? ''
@@ -92,8 +91,6 @@ function App() {
                   </ul>
                 </Reveal>
               </section>
-
-              <InspirationSection />
             </div>
           </div>
           <div className="beans-layout__spacer" aria-hidden />
